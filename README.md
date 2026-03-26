@@ -1,42 +1,39 @@
 # 🎓 Learning Agent
 
-Um agente CLI para explicar alterações de código, reforçar conceitos de engenharia de software e atuar como seu mentor particular de programação.
+Um agente desenvolvido para atuar como seu **Mentor Sênior e Professor de Engenharia de Software**.
+Ele possui foco estritamente didático (*Read-Only*) e nunca escreverá código estrutural no repositório. O papel dele é ler suas necessidades ou mudanças em código e gerar aulas, dicas e reflexões detalhadas diretamente em um arquivo `explicacoes.md` criado na raiz do seu projeto.
 
-O **Learning Agent** adota uma abordagem *Read-Only* (somente leitura). Ele **nunca** vai escrever código para você copiar e colar. Em vez disso, ele gerará aulas e reflexões ricas no arquivo `explicacoes.md` do seu projeto.
+Existem 3 formas principais de utilizar os poderes deste agente, dependendo da sua preferência:
 
-## 🚀 Instalação e Uso Automático via NPX
-
-Você não precisa instalar! Pode rodar direto com o `npx`:
-
-```sh
-# Para explicar as alterações de código locais (git diff)
-npx learning-agent@latest
-
-# Para acionar uma aula teórica sobre um conceito ancorado na prática
-npx learning-agent@latest explain "Clean Architecture"
-```
-
-## 💻 Instalação Global (Recomendado)
-
-Se preferir instalar globalmente na sua máquina para usar os atalhos curtos:
+## 1. Como um CLI Global (Recomendado para uso diário)
+A melhor forma de ter o agente rápido e sempre disponível no seu terminal é instalando-o globalmente. **Você só precisa executar isso uma única vez:**
 
 ```sh
 npm install -g learning-agent
 ```
 
-Após instalar, você terá acesso a dois comandos poderosos em qualquer diretório:
+Após instalar, você ganhará comandos rápidos que podem ser executados instantaneamente em qualquer pasta do seu computador:
+- **`la-explain "NOME DO TEMA"`**: Pede ao agente para montar uma aula teórica fundamentada em **casos reais da indústria** a respeito de um conceito. *(Ex: `la-explain "Micro-frontends"`)*.
+- **`learning-agent`**: Faz o agente ler as mudanças do seu código atual (`git diff`) e gerar uma revisão focada em melhorar a sua forma de programar, refletindo sobre as linhas adicionadas ou apagadas.
 
-1. **`learning-agent`**: Analisa as mudanças não "commitadas" (diff do Git) e gera uma revisão didática orientando a evolução do código.
-2. **`la-explain <TEMA>`**: Escreve o assunto que você quer aprender, e o agente trará casos de usos reais na indústria formados num layout de aula. Exemplo: `la-explain "Micro-frontends"`.
+## 2. Como Execução Única (via `npx`)
+Se você quer rodar a ferramenta em uma máquina temporária ou simplesmente não quer instalar globalmente, você pode executar buscando a versão mais recente em tempo real da internet:
 
-## 🤖 Integrações Nativas
-O projeto foi moldado para funcionar nativamente no topo de workflows com inteligência artificial!
+```sh
+npx learning-agent@latest explain "Clean Architecture"
+```
+*(Nota: O npx baixa e roda em background sem salvar o binário, o que torna a execução inicial marginalmente mais lenta).*
 
-### Para Github Copilot 🐙
-Adicione nosso arquivo `.github/copilot-instructions.md` no seu projeto alvo. Ele instruirá o chat do Copilot a adotar a persona de professor exigente, focada no aprendizado via casos reais.
+## 3. Direto nos "Chats" das IAs (Integrações Passivas)
+O *learning-agent* também é um ecossistema projetado para infectar as IAs do seu editor de textos, forçando-as a aturarem como professoras. Você nem precisa abrir o terminal!
 
-### Para Antigravity 🌌
-Em projetos suportados, usamos um `SKILL.md` customizado (pasta `.agents/skills/learning-agent`) para permitir acionamento do agente sem consumir dependências locais pesadas.
+### 🌌 O Caminho Antigravity (Skill)
+O Antigravity possui suporte à nossa skill nativa. Se você possui o arquivo de instruções `.agents/skills/learning-agent/SKILL.md` e usa o Antigravity, **basta pedir no chat**:
+> *"/learning-agent explique os prós e contras da arquitetura Serverless."*
+O próprio Antigravity vai ler os parâmetros dessa skill e construir o material didático usando a sua inteligência superpoderosa.
+
+### 🐙 O Caminho GitHub Copilot
+Se você copiar o arquivo `.github/copilot-instructions.md` deste repositório para a raiz dos projetos onde você trabalha, o seu Chat do GitHub Copilot será reconfigurado! Ele deixará de vomitar "códigos prontos com falhas" e adotará imediatamente a persona encorajadora do Learning Agent, ajudando-o a testar e planejar melhor através de orientações reflexivas.
 
 ---
-> Desenvolvido para promover o aprendizado contínuo durante o desenvolvimento prático do dia a dia.
+> Desenvolvido para transformar qualquer repositório de código e chat corporativo em uma oportunidade imediata de aprendizado profundo.
