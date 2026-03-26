@@ -87,7 +87,15 @@ export async function explainTheme(tema: string, outputFile?: string) {
     const now = new Date();
     const pad = (n: number) => n.toString().padStart(2, '0');
     const dateStr = `${pad(now.getDate())}${pad(now.getMonth() + 1)}${now.getFullYear()}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-    file = `explain-${temaSlug}-${dateStr}.md`;
+    let baseFile = `explain-${temaSlug}-${dateStr}`;
+    let ext = '.md';
+    let candidate = baseFile + ext;
+    let counter = 1;
+    while (fs.existsSync(candidate)) {
+      candidate = `${baseFile}-${counter}${ext}`;
+      counter++;
+    }
+    file = candidate;
   }
 
   // Adiciona seções extras ao final do conteúdo
