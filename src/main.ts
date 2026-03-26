@@ -36,17 +36,28 @@ async function explainFileChange(file: string, git: SimpleGit) {
 }
 
 export async function explainTheme(tema: string) {
-  // Lê o template da skill do arquivo .md focado no tema
-  const templatePath = path.join(__dirname, '../../skills/explain-theme.md');
-  
+  // Lê o template da skill: tenta primeiro ao lado do pacote (npm/npx),
+  // depois o caminho do workspace de desenvolvimento.
+  const candidatePaths = [
+    path.join(__dirname, '../skills/explain-theme.md'),   // dentro do pacote npm
+    path.join(__dirname, '../../skills/explain-theme.md'), // workspace local de dev
+  ];
+
   let content = '';
-  try {
-    const rawTemplate = fs.readFileSync(templatePath, 'utf-8');
-    // Substitui as variáveis do template pelo tema passado pelo usuário
-    content = rawTemplate.replace(/\{\{TEMA\}\}/g, tema);
-  } catch (err) {
-    // Fallback caso o CLI seja executado num ambiente que perdeu o acesso ao template
-    content = `# Aula: ${tema}\n\nOcorreu um erro ao carregar o template detalhado de Skills, mas continue estudando sobre **${tema}**!`;
+  let loaded = false;
+  for (const templatePath of candidatePaths) {
+    try {
+      const rawTemplate = fs.readFileSync(templatePath, 'utf-8');
+      content = rawTemplate.replace(/\{\{TEMA\}\}/g, tema);
+      loaded = true;
+      break;
+    } catch {
+      // tenta o próximo caminho
+    }
+  }
+
+  if (!loaded) {
+    content = `# Aula: ${tema}\n\nOcorreu um erro ao carregar o template. Continue estudando sobre **${tema}**!`;
   }
   
   fs.writeFileSync('explicacoes.md', content, 'utf-8');
