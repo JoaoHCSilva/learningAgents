@@ -1,12 +1,15 @@
 {
   "name": "learning-agent",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Agente CLI para explicar alterações de código e promover aprendizado.",
   "main": "dist/index.js",
   "bin": {
     "learning-agent": "dist/index.js",
     "la-explain": "dist/index.js"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js"
