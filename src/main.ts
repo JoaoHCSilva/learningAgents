@@ -80,12 +80,22 @@ export async function explainTheme(tema: string, outputFile?: string) {
     content = `# Aula: ${tema}\n\nOcorreu um erro ao carregar o template. Continue estudando sobre **${tema}**!`;
   }
 
-  // Sempre gera explain-<tema>.md, nunca explicacoes.md
+  // Sempre gera explain-<tema>-<data-hora>.md para evitar sobrescrita
   let file = outputFile;
   if (!file) {
     const temaSlug = tema.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    file = `explain-${temaSlug}.md`;
+    const now = new Date();
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    const dateStr = `${pad(now.getDate())}${pad(now.getMonth() + 1)}${now.getFullYear()}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    file = `explain-${temaSlug}-${dateStr}.md`;
   }
+
+  // Adiciona seções extras ao final do conteúdo
+  content += '\n\n---\n';
+  content += `## Exemplo Prático\nDemonstre um caso real ou um trecho de código que ilustre o uso de **${tema}**.\n\n`;
+  content += `## Desafio/Reflexão\n- Como você aplicaria **${tema}** no seu contexto?\n- Quais dúvidas ainda restam?\n- Tente criar um mini-projeto ou experimento usando este conceito.\n\n`;
+  content += `> *Este material foi gerado automaticamente pelo Learning Agent para promover aprendizado ativo. Compartilhe suas respostas e dúvidas com seu time!*\n`;
+
   fs.writeFileSync(file, content, 'utf-8');
 }
 
