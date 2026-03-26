@@ -35,9 +35,8 @@ async function explainFileChange(file: string, git: SimpleGit) {
   return explanation;
 }
 
-export async function explainTheme(tema: string) {
-  // Lê o template da skill: tenta primeiro ao lado do pacote (npm/npx),
-  // depois o caminho do workspace de desenvolvimento.
+export async function explainTheme(tema: string, outputFile?: string) {
+  // Tenta múltiplos caminhos para o template
   const candidatePaths = [
     path.join(__dirname, '../skills/explain-theme.md'),   // dentro do pacote npm
     path.join(__dirname, '../../skills/explain-theme.md'), // workspace local de dev
@@ -59,6 +58,8 @@ export async function explainTheme(tema: string) {
   if (!loaded) {
     content = `# Aula: ${tema}\n\nOcorreu um erro ao carregar o template. Continue estudando sobre **${tema}**!`;
   }
-  
-  fs.writeFileSync('explicacoes.md', content, 'utf-8');
+
+  const file = outputFile || `explain-${tema.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.md`;
+  fs.writeFileSync(file, content, 'utf-8');
 }
+

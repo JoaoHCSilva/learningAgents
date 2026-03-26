@@ -1,12 +1,8 @@
 {
   "name": "learning-agent",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Agente CLI para explicar alterações de código e promover aprendizado.",
   "main": "dist/index.js",
-  "bin": {
-    "learning-agent": "dist/index.js",
-    "la-explain": "dist/index.js"
-  },
   "files": [
     "dist/"
   ],
@@ -21,9 +17,6 @@
     "url": "https://github.com/JoaoHCSilva/Learning-Agents.git"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "commander": "^11.1.0",
-    "ora": "^7.0.1",
     "simple-git": "^3.19.1"
   },
   "devDependencies": {
