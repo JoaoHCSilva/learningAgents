@@ -55,6 +55,10 @@ if ($tagExiste) {
     exit 1
 }
 
+# Atualiza a versão no package.json
+Write-Host "Atualizando package.json para a versao $Versao..." -ForegroundColor Yellow
+npm version $Versao --no-git-tag-version
+
 # Verifica se há mudanças não commitadas
 $status = git status --porcelain
 if ($status) {
