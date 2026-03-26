@@ -80,7 +80,6 @@ Write-Host "========================================" -ForegroundColor Green
 Write-Host "  Release $tag publicada com sucesso!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 Write-Host ""
-Write-Host "O GitHub Actions vai buildar o .exe automaticamente." -ForegroundColor White
-Write-Host "Acompanhe em: https://github.com/JoaoHCSilva/Automa-o-Node/actions" -ForegroundColor Gray
-Write-Host "Download em:  https://github.com/JoaoHCSilva/Automa-o-Node/releases" -ForegroundColor Gray
+Write-Host "O GitHub Actions vai buildar automaticamente." -ForegroundColor White
+Write-Host "Acompanhe em: https://github.com/JoaoHCSilva/learning-agent/actions" -ForegroundColor Gray
 Write-Host ""
