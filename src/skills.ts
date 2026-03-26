@@ -8,7 +8,7 @@ import path from 'path';
 export async function setupGitHook() {
   const gitDir = path.resolve('.git/hooks');
   const hookPath = path.join(gitDir, 'post-commit');
-  const hookScript = `#!/bin/sh\nnpx learning-agent --output explicacao-alteracoes.md\n`;
+  const hookScript = `#!/bin/sh\nnpx learning-agent --output explicacoes.md\n`;
   if (!fs.existsSync(gitDir)) return;
   fs.writeFileSync(hookPath, hookScript, { mode: 0o755 });
 }
