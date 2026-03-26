@@ -59,7 +59,12 @@ export async function explainTheme(tema: string, outputFile?: string) {
     content = `# Aula: ${tema}\n\nOcorreu um erro ao carregar o template. Continue estudando sobre **${tema}**!`;
   }
 
-  const file = outputFile || `explain-${tema.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.md`;
+  // Sempre gera explain-<tema>.md, nunca explicacoes.md
+  let file = outputFile;
+  if (!file) {
+    const temaSlug = tema.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    file = `explain-${temaSlug}.md`;
+  }
   fs.writeFileSync(file, content, 'utf-8');
 }
 

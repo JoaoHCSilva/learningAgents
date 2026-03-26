@@ -1,6 +1,6 @@
 {
   "name": "learning-agent",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Agente CLI para explicar alterações de código e promover aprendizado.",
   "main": "dist/index.js",
   "files": [

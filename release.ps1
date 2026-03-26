@@ -70,6 +70,19 @@ else {
     Write-Host "Nenhuma mudanca pendente." -ForegroundColor Gray
 }
 
+
+# Limita o número de tags remotas a 3 (mantém as 2 mais recentes além da nova)
+$tagsRemotasParaDeletar = @()
+if ($tagsRemotas.Count -ge 3) {
+    $tagsRemotasParaDeletar = $tagsRemotas | Select-Object -Skip 2
+    foreach ($tagDel in $tagsRemotasParaDeletar) {
+        $tagName = "v$tagDel"
+        Write-Host "Deletando tag antiga: $tagName" -ForegroundColor Red
+        git push --delete origin $tagName
+        git tag -d $tagName | Out-Null
+    }
+}
+
 # Cria a tag
 Write-Host "Criando tag $tag..." -ForegroundColor Yellow
 git tag $tag
