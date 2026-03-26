@@ -27,13 +27,22 @@ npx learning-agent@latest explain "Clean Architecture"
 ## 3. Direto nos "Chats" das IAs (Integrações Passivas)
 O *learning-agent* também é um ecossistema projetado para infectar as IAs do seu editor de textos, forçando-as a aturarem como professoras. Você nem precisa abrir o terminal!
 
-### 🌌 O Caminho Antigravity (Skill)
-O Antigravity possui suporte à nossa skill nativa. Se você possui o arquivo de instruções `.agents/skills/learning-agent/SKILL.md` e usa o Antigravity, **basta pedir no chat**:
-> *"/learning-agent explique os prós e contras da arquitetura Serverless."*
-O próprio Antigravity vai ler os parâmetros dessa skill e construir o material didático usando a sua inteligência superpoderosa.
+### 🪄 Auto-Configuração Rápida
+Você não precisa copiar nenhum arquivo manualmente! Vá até a raiz de qualquer projeto seu e rode:
+```sh
+npx learning-agent@latest init
+```
+*(Ou `learning-agent init` se já instalou globalmente).*
 
-### 🐙 O Caminho GitHub Copilot
-Se você copiar o arquivo `.github/copilot-instructions.md` deste repositório para a raiz dos projetos onde você trabalha, o seu Chat do GitHub Copilot será reconfigurado! Ele deixará de vomitar "códigos prontos com falhas" e adotará imediatamente a persona encorajadora do Learning Agent, ajudando-o a testar e planejar melhor através de orientações reflexivas.
+Este único comando mágico vai criar nativamente todos os arquivos invisíveis para reprogramar as duas principais ferramentas do mercado:
+
+#### 🌌 O Caminho Antigravity (Skill)
+O comando criará a skill automática para você. Se você usa o Antigravity, **basta pedir no chat do seu editor**:
+> *"/learning-agent explique os prós e contras da arquitetura Serverless."*
+O próprio Antigravity vai ler os parâmetros dessa skill gerada e construir o material didático usando a sua inteligência nativa.
+
+#### 🐙 O Caminho GitHub Copilot
+O comando também configurará as **Copilot Instructions**. Logo após executar o `init`, o seu Chat do GitHub Copilot será reconfigurado silenciosamente. Ele deixará de vomitar "códigos prontos com falhas" e adotará imediatamente a persona encorajadora do Learning Agent, ajudando-o a refatorar melhor através de orientações reflexivas.
 
 ---
 > Desenvolvido para transformar qualquer repositório de código e chat corporativo em uma oportunidade imediata de aprendizado profundo.

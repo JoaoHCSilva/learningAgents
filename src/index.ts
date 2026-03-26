@@ -28,6 +28,21 @@ program
     }
   });
 
+program
+  .command('init')
+  .description('Inicializa arquivos nativos para Copilot e Antigravity no diretório atual')
+  .action(async () => {
+    console.log('');
+    const spinner = ora('Criando arquivos de configuração nativos...').start();
+    try {
+      const { initIntegrations } = await import('./skills');
+      await initIntegrations();
+      spinner.succeed(chalk.green('Integrações autoconfiguradas! 🐙🌌 (Sua inteligência artificial local agora é um professor)'));
+    } catch (err: any) {
+      spinner.fail(chalk.red(`Falha ao configurar: ${err.message}`));
+    }
+  });
+
 program.action(async (opts) => {
   // If we have top-level options for the hook
   const topOpts = program.opts();
