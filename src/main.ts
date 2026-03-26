@@ -11,28 +11,49 @@ export async function explainChanges(outputFile: string) {
     throw new Error('Nenhuma alteração detectada. Puxou as mudanças da sua mente ou do git? 🤔');
   }
 
-  let explanations = `# Aula Prática: Suas Alterações Recentes\n\nNeste documento você encontrará explicações sobre as mudanças de código.\n\n`;
+  // Contexto e resumo
+  let explanations = `# Revisão Didática das Alterações\n\n`;
+  explanations += `## Contexto\n- **Branch:** ${status.current || 'N/A'}\n- **Resumo:** Alterações recentes detectadas pelo Learning Agent.\n\n`;
 
+  // Principais mudanças
+  explanations += `## Principais Mudanças\n`;
   for (const file of changedFiles) {
-    explanations += await explainFileChange(file, git);
+    explanations += `- **${file}**: ${await getFileChangeSummary(file, git)}\n`;
   }
+  explanations += '\n';
+
+  // Análise de impacto
+  explanations += `## Análise de Impacto\n- Avalie se as mudanças afetam o funcionamento do sistema, dependências ou performance.\n- Verifique se há riscos de bugs, regressões ou problemas de build.\n\n`;
+
+  // Boas práticas e recomendações
+  explanations += `## Boas Práticas Observadas\n- Commits atômicos e mensagens claras são recomendados.\n- Mantenha o versionamento e documentação atualizados.\n\n`;
+  explanations += `## Pontos de Melhoria\n- Adicione testes automatizados para garantir integridade.\n- Atualize a documentação se necessário.\n\n`;
+
+  // Estudo de caso
+  explanations += `## Estudo de Caso\nDescreva um cenário real de uso após estas alterações. Como o sistema ou usuário será impactado?\n\n`;
+
+  // Perguntas para reflexão
+  explanations += `## Perguntas para Reflexão\n- O que motivou cada mudança?\n- Há riscos de efeitos colaterais?\n- O que testar após o merge?\n\n`;
+
+  explanations += `---\n> *Este relatório foi gerado automaticamente pelo Learning Agent para promover reflexão crítica e aprendizado contínuo.*\n`;
 
   fs.writeFileSync(outputFile, explanations, 'utf-8');
 }
 
-async function explainFileChange(file: string, git: SimpleGit) {
-  let diff = '';
-  try {
-    diff = await git.diff([file]);
-  } catch {
-    diff = '';
-  }
-  if (!diff) return '';
 
-  let explanation = `## 📝 Alterações em \`${file}\`\n\n`;
-  explanation += `**O que você deve aprender aqui:**\n- Analise as linhas com \`+\` (novas construções) e \`-\` (refatorações).\n- Pense em como essa mudança impacta a arquitetura do projeto.\n\n`;
-  explanation += '```diff\n' + diff.split('\n').slice(0, 30).join('\n') + '\n```\n\n---\n';
-  return explanation;
+// Gera um resumo simples da alteração do arquivo
+async function getFileChangeSummary(file: string, git: SimpleGit): Promise<string> {
+  try {
+    const diff = await git.diff([file]);
+    if (!diff) return 'Alteração detectada.';
+    // Extrai tipo de alteração (adição, modificação, remoção)
+    if (/^new file mode/m.test(diff)) return 'Arquivo adicionado.';
+    if (/^deleted file mode/m.test(diff)) return 'Arquivo removido.';
+    if (/^index/m.test(diff)) return 'Arquivo modificado.';
+    return 'Alteração detectada.';
+  } catch {
+    return 'Alteração detectada.';
+  }
 }
 
 export async function explainTheme(tema: string, outputFile?: string) {
