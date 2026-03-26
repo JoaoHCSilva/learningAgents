@@ -1,0 +1,28 @@
+{
+  "name": "learning-agent",
+  "version": "0.1.491",
+  "description": "Agente CLI para explicar alterações de código e promover aprendizado.",
+  "main": "dist/index.js",
+  "bin": {
+    "learning-agent": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "joaohcsilva",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoaoHCSilva/Learning-Agents.git"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "simple-git": "^3.19.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.3.3"
+  }
+}
