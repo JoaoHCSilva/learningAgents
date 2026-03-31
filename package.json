@@ -29,5 +29,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/JoaoHCSilva/Learning-Agents.git"
+  },
+  "dependencies": {
+    "learning-agent": "^2.0.6"
   }
 }
