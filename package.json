@@ -1,26 +1,32 @@
 {
   "name": "learning-agent",
-  "version": "1.2.7",
-  "description": "Agente CLI para explicar alterações de código e promover aprendizado.",
-  "main": "dist/index.js",
+  "version": "2.0.0",
+  "description": "Professor de Engenharia de Software no VSCode — /la-explain, /la-review, /la-file",
+  "main": "scripts/cli.js",
+  "bin": {
+    "learning-agent": "scripts/cli.js"
+  },
   "files": [
-    "dist/"
+    "scripts/",
+    "assets/"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "postinstall": "node scripts/install.js"
   },
+  "keywords": [
+    "learning",
+    "agent",
+    "copilot",
+    "antigravity",
+    "vscode",
+    "education",
+    "mentor",
+    "skills"
+  ],
   "author": "joaohcsilva",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/JoaoHCSilva/Learning-Agents.git"
-  },
-  "dependencies": {
-    "simple-git": "^3.19.1"
-  },
-  "devDependencies": {
-    "@types/node": "^25.5.0",
-    "typescript": "^5.3.3"
   }
 }

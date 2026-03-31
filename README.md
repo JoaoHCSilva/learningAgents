@@ -5,6 +5,20 @@ Um agente que atua como **Mentor Sênior e Professor de Engenharia de Software**
 
 Foco 100% didático — ele **nunca** modifica seu código. Apenas lê, analisa e gera material de aprendizado em arquivos markdown.
 
+## Instalação
+
+```sh
+# Instalar no projeto (configura automaticamente)
+npm install learning-agent
+
+# OU instalar globalmente
+npm install -g learning-agent
+# E depois configurar no projeto desejado:
+learning-agent init
+```
+
+Após a instalação, os comandos `/la-*` estarão disponíveis automaticamente no chat do VSCode (Copilot/Antigravity).
+
 ## Como Usar
 
 Os comandos funcionam diretamente no chat do **GitHub Copilot** ou **Antigravity** no VSCode:
@@ -42,15 +56,15 @@ Todo material é salvo na pasta `explicacoes/` e segue uma estrutura padronizada
 2. **🔧 Exemplos Práticos** — Casos reais da indústria, código comentado, comparações
 3. **💡 Resumo e Próximos Passos** — Pontos-chave, desafio prático, referências
 
-## Setup
+## O que a instalação faz?
 
-Para usar em **qualquer projeto**, copie a pasta `.agents/` para a raiz do seu repositório:
+Quando você roda `npm install learning-agent`, o pacote automaticamente:
 
-```sh
-cp -r .agents/ /caminho/do/seu/projeto/.agents/
-```
+1. Copia os skills para `.agents/skills/` (Antigravity)
+2. Cria `.github/copilot-instructions.md` (GitHub Copilot)
+3. Cria o diretório `explicacoes/` para os markdowns gerados
 
-Os comandos `/la-*` estarão disponíveis automaticamente no chat do VSCode.
+> **Nota:** Para sobrescrever configurações existentes, use `learning-agent init --force`.
 
 ## Filosofia
 
