@@ -1,4 +1,3 @@
-
 # 🎓 Learning Agent
 
 Um agente que atua como **Mentor Sênior e Professor de Engenharia de Software** diretamente no seu VSCode.
