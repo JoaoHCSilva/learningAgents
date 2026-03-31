@@ -1,41 +1,63 @@
 
 # 🎓 Learning Agent
 
-## Instalação
+Um agente que atua como **Mentor Sênior e Professor de Engenharia de Software** diretamente no seu VSCode.
 
-Você pode instalar o Learning Agent em seu projeto com:
+Foco 100% didático — ele **nunca** modifica seu código. Apenas lê, analisa e gera material de aprendizado em arquivos markdown.
 
-```sh
-# via npm
-npm install learning-agent
-# via yarn
-yarn add learning-agent
-# via pnpm
-pnpm add learning-agent
+## Como Usar
+
+Os comandos funcionam diretamente no chat do **GitHub Copilot** ou **Antigravity** no VSCode:
+
+### `/la-explain <tema>`
+Gera uma explicação didática sobre qualquer conceito técnico.
+
+```
+/la-explain Clean Architecture
+/la-explain Micro-frontends
+/la-explain SOLID Principles
+/la-explain Docker Compose
 ```
 
-Um agente desenvolvido para atuar como seu **Mentor Sênior e Professor de Engenharia de Software**.
-Ele possui foco estritamente didático (*Read-Only*) e nunca escreverá código estrutural no repositório. O papel dele é ler suas necessidades ou mudanças em código e gerar aulas, dicas e reflexões detalhadas diretamente em um arquivo markdown criado na raiz do seu projeto.
+### `/la-review`
+Analisa as alterações recentes do seu código (git diff) e explica o que mudou, por quê e o impacto.
 
-## Como Usar (Skills nativas Copilot/Antigravity)
+```
+/la-review
+```
 
-Agora, o Learning Agent funciona 100% via skills, sem necessidade de CLI, npx ou instalação global.
+### `/la-file <arquivo>`
+Explica um arquivo específico do projeto — estrutura, padrões, conceitos e como se conecta ao resto.
 
-### Exemplos de uso direto no chat:
+```
+/la-file src/main.ts
+/la-file controllers/AuthController.php
+```
 
-- **`/la-explain "Clean Architecture"`**: Gera uma explicação didática sobre o tema, salvando em `explain-clean-architecture.md`.
-- **`/la-explain "Micro-frontends"`**: Gera uma aula sobre micro-frontends.
-- **`/la-review`**: Analisa as alterações recentes do código e gera um arquivo explicativo.
+## Estrutura dos Arquivos Gerados
 
-### Como funciona
+Todo material é salvo na pasta `explicacoes/` e segue uma estrutura padronizada:
 
-1. Digite o comando `/la-explain <tema>` ou `/la-review` no chat do Copilot ou Antigravity.
-2. O agente executa a skill correspondente e salva o arquivo markdown na raiz do projeto, nomeado por data ou tema.
-3. O conteúdo é sempre didático, com exemplos reais e perguntas reflexivas.
+1. **📖 Explicação do Tema** — Definição clara, funcionamento, quando usar e quando não usar
+2. **🔧 Exemplos Práticos** — Casos reais da indústria, código comentado, comparações
+3. **💡 Resumo e Próximos Passos** — Pontos-chave, desafio prático, referências
 
-### Integração automática
+## Setup
 
-Ao rodar o comando de inicialização, as instruções e skills são configuradas para Copilot e Antigravity reconhecerem os comandos `/la-*` automaticamente.
+Para usar em **qualquer projeto**, copie a pasta `.agents/` para a raiz do seu repositório:
+
+```sh
+cp -r .agents/ /caminho/do/seu/projeto/.agents/
+```
+
+Os comandos `/la-*` estarão disponíveis automaticamente no chat do VSCode.
+
+## Filosofia
+
+- 🔒 **Read-Only**: Nunca modifica código do projeto
+- 🎯 **Didático**: Ensina através de reflexão, não de respostas prontas
+- 🏢 **Casos Reais**: Ancora conceitos em exemplos da indústria
+- 📝 **Materializado**: Toda explicação vira um arquivo `.md` consultável
 
 ----
-> Desenvolvido para transformar qualquer repositório de código e chat corporativo em uma oportunidade imediata de aprendizado profundo.
+> Desenvolvido para transformar qualquer repositório em uma oportunidade de aprendizado profundo.

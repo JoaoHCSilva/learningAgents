@@ -7,3 +7,7 @@ dist/
 .vscode/
 .DS_Store
 npm-debug.log*
+
+# Arquivos gerados pelo Learning Agent
+explicacoes/*.md
+!explicacoes/.gitkeep
