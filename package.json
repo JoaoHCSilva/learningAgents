@@ -1,6 +1,6 @@
 {
   "name": "learning-agent",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Professor de Engenharia de Software no VSCode — /la-explain, /la-review, /la-file",
   "main": "scripts/cli.js",
   "bin": {
